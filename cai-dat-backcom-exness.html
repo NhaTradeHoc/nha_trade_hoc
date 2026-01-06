@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome (Updated to 6.5.1 for X and Threads icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,11 +38,10 @@
         }
     </script>
     <style>
-        /* Article specific styling to ensure images fit */
         .prose img {
             width: 100%;
             height: auto;
-            object-fit: contain; /* Ensures the whole image is visible */
+            object-fit: contain;
             border: 1px solid #e5e7eb;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
@@ -60,33 +59,32 @@
                     <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
                 </a>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html#kien-thuc" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
+                    <a href="index.html#hoan-phi" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
+                    <a href="index.html#dich-vu" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
+                    <a href="kien-thuc.html" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
                     <a href="https://t.me/nhatradehocspace" target="_blank" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Cộng Đồng</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Article Header & Hero Image -->
+    <!-- Article Header -->
     <header class="pt-32 pb-12 bg-white relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Breadcrumb -->
             <div class="flex items-center text-xs uppercase tracking-widest text-gray-400 mb-6 font-bold">
                 <a href="index.html" class="hover:text-trade-blue transition-colors">Home</a>
                 <span class="mx-2">/</span>
-                <a href="index.html#kien-thuc" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
+                <a href="kien-thuc.html" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
                 <span class="mx-2">/</span>
                 <span class="text-trade-blue">Hướng Dẫn</span>
             </div>
 
-            <!-- Title -->
             <h1 class="text-2xl md:text-5xl font-black text-trade-blue mb-8 leading-snug md:leading-normal">
                 HƯỚNG DẪN CÀI ĐẶT <br>
                 <span class="bg-trade-yellow px-1 inline-block mt-1 md:mt-2 leading-none py-1">BACKCOM EXNESS</span> <br>
                 CHI TIẾT NHẤT
             </h1>
 
-            <!-- Meta Info -->
             <div class="flex items-center justify-between border-y border-gray-100 py-4 mb-8 text-sm text-gray-500">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-trade-blue text-white flex items-center justify-center font-bold rounded-full">N</div>
@@ -95,16 +93,14 @@
                 <div>28 Dec 2025 &bull; 3 phút đọc</div>
             </div>
 
-            <!-- Featured Image -->
-            <!-- UPDATED: Changed aspect-video to aspect-[1.91] to fit 1200x628 image perfectly -->
             <div class="relative w-full aspect-[1.91] mb-12 shadow-brutal-dark overflow-hidden border-2 border-trade-blue">
-                <img src="VN_Take_control_1200x628.png" alt="Exness Backcom Guide" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1200&auto=format&fit=crop" alt="Exness Backcom Guide" class="w-full h-full object-cover">
             </div>
         </div>
     </header>
 
     <!-- Article Content -->
-    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div class="prose prose-lg prose-blue mx-auto font-serif text-gray-700 leading-loose">
             
             <p class="font-sans text-xl font-medium text-gray-900 mb-8 border-l-4 border-trade-yellow pl-6 italic">
@@ -141,7 +137,6 @@
                 <div class="border border-gray-200 p-6 rounded-sm bg-white shadow-sm">
                     <h3 class="font-sans font-bold text-lg text-trade-blue mb-2"><span class="bg-trade-blue text-white px-2 py-1 mr-2 text-sm">BƯỚC 1</span> Truy cập Live Chat</h3>
                     <p class="mb-4">Đăng nhập vào trang chủ Exness, tìm biểu tượng <strong>Chat (Hỗ trợ trực tuyến)</strong> ở góc dưới bên phải màn hình.</p>
-                    <!-- UPDATED: Removed fixed height and object-cover to show full image -->
                     <div class="mb-2 border border-gray-300">
                         <img src="Screenshot 2026-01-05 200931.png" alt="Vị trí nút Live Chat trên màn hình Exness" class="w-full h-auto">
                     </div>
@@ -173,7 +168,6 @@
                     <h3 class="font-sans font-bold text-lg text-trade-blue mb-2"><span class="bg-trade-blue text-white px-2 py-1 mr-2 text-sm">BƯỚC 4</span> Mở tài khoản giao dịch MỚI</h3>
                     <p class="mb-4 text-red-600 font-bold italic">Lưu ý: Việc chuyển đổi chỉ áp dụng cho các ID giao dịch (MT4/MT5) được tạo SAU KHI liên kết thành công.</p>
                     <p>Hãy vào trang quản lý tài khoản, nhấn <strong>"Mở tài khoản mới"</strong> (Standard, Pro, hoặc Zero tùy nhu cầu của bạn). Sử dụng ID mới này để giao dịch và nhận hoàn phí.</p>
-                    <!-- UPDATED: Removed fixed height and object-cover to show full image -->
                     <div class="mb-2 border border-gray-300">
                          <img src="Screenshot 2026-01-05 201842.png" alt="Nút Mở tài khoản mới trong trang quản trị" class="w-full h-auto">
                     </div>
@@ -183,14 +177,68 @@
             <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">Xác Nhận & Tham Gia Nhóm</h2>
             <p>Sau khi hoàn tất các bước trên, hãy gửi ID tài khoản (MT4/MT5) mới của bạn cho Admin để chúng tôi kích hoạt hệ thống Auto-Rebate cho bạn.</p>
             
-            <div class="flex justify-center mt-8">
+            <div class="flex justify-center mt-8 mb-12">
                 <a href="https://t.me/mmto1b" target="_blank" class="flex items-center px-8 py-4 bg-trade-blue text-white font-bold uppercase tracking-widest hover:bg-trade-yellow hover:text-trade-blue transition-all shadow-xl">
                     <i class="fa-brands fa-telegram text-2xl mr-3"></i> Inbox Admin Xác Nhận
                 </a>
             </div>
 
+            <!-- Social Share Section -->
+            <div class="border-t border-gray-200 pt-8 mt-12">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Chia sẻ bài viết</h3>
+                <div class="flex gap-4">
+                    <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href), '_blank')" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors shadow-sm" title="Share on Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </button>
+                    <!-- X (Twitter) -->
+                    <button onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href), '_blank')" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shadow-sm" title="Share on X">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </button>
+                    <!-- Threads -->
+                    <button onclick="window.open('https://www.threads.net/intent/post?text='+encodeURIComponent(window.location.href), '_blank')" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shadow-sm" title="Share on Threads">
+                        <i class="fa-brands fa-threads"></i>
+                    </button>
+                    <!-- Telegram -->
+                    <button onclick="window.open('https://t.me/share/url?url='+encodeURIComponent(window.location.href), '_blank')" class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-colors shadow-sm" title="Share on Telegram">
+                        <i class="fa-brands fa-telegram"></i>
+                    </button>
+                    <!-- Copy Link -->
+                    <button onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép link!')" class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center hover:bg-gray-300 transition-colors shadow-sm" title="Copy Link">
+                        <i class="fa-solid fa-link"></i>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </article>
+
+    <!-- Related Articles Section (Text Only) -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
+        <h3 class="text-2xl font-black text-trade-blue uppercase mb-8 flex items-center">
+            <span class="bg-trade-yellow w-2 h-8 mr-3 block"></span> Bài Viết Liên Quan
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Article Link 1 -->
+            <a href="trading-la-toan-hoc.html" class="group block border-l-4 border-trade-blue bg-gray-50 p-6 hover:bg-white hover:shadow-md transition-all">
+                <h4 class="font-black text-lg text-trade-blue uppercase group-hover:text-trade-light-blue leading-tight">
+                    Trading Là Toán Học: Giải Mã "Kỳ Vọng Dương"
+                </h4>
+                <div class="mt-2 text-xs font-bold text-gray-400 group-hover:text-trade-yellow transition-colors">
+                    Xem ngay <i class="fa-solid fa-arrow-right ml-1"></i>
+                </div>
+            </a>
+            
+            <!-- Article Link 2 -->
+             <div class="group block border-l-4 border-gray-300 bg-gray-50 p-6 opacity-60">
+                <h4 class="font-black text-lg text-gray-400 uppercase leading-tight">
+                    Quản Lý Vốn Chuyên Sâu (Sắp Ra Mắt)
+                </h4>
+                <div class="mt-2 text-xs font-bold text-gray-400">
+                    Coming Soon
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12 text-white">
@@ -225,3 +273,5 @@
 
 </body>
 </html>
+
+
