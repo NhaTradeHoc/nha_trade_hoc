@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
         }
     </script>
     <style>
-        .font-numbers { font-variant-numeric: tabular-nums; }
+        .font-numbers { font-variant-numeric: tabular-nums; letter-spacing: -1px; }
         
         /* Modal Animation */
         .modal-enter { opacity: 0; transform: scale(0.9); }
@@ -58,9 +58,8 @@
                 </a>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html#hoan-phi" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
-                    <a href="index.html#dich-vu" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
                     <a href="index.html#kien-thuc" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
-                    <a href="#chi-phi" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Đăng Ký Ngay</a>
+                    <a href="https://t.me/mmto1b" target="_blank" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Đăng Ký Ngay</a>
                 </div>
             </div>
         </div>
@@ -103,15 +102,20 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
 
-            <!-- Buổi 1 -->
-            <div class="bg-white p-8 border border-gray-200 hover:border-trade-blue transition-all group shadow-sm hover:shadow-xl">
+            <!-- Buổi 1 (Updated with Canva Modal Trigger) -->
+            <div class="bg-white p-8 border border-gray-200 hover:border-trade-blue transition-all group shadow-sm hover:shadow-xl flex flex-col h-full">
                 <div class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Buổi 01</div>
                 <h3 class="text-xl font-bold text-trade-blue mb-4 group-hover:text-trade-yellow transition-colors">Nguyên lý vận động & Thành phần thị trường</h3>
-                <ul class="space-y-2 text-sm text-gray-600">
+                <ul class="space-y-2 text-sm text-gray-600 mb-6 flex-grow">
                     <li class="flex items-start"><i class="fa-solid fa-check text-trade-blue mt-1 mr-2 text-xs"></i> Lý thuyết thị trường đấu giá (Auction Market Theory).</li>
                     <li class="flex items-start"><i class="fa-solid fa-check text-trade-blue mt-1 mr-2 text-xs"></i> Nguyên lý khớp lệnh & Tính thanh khoản.</li>
                     <li class="flex items-start"><i class="fa-solid fa-check text-trade-blue mt-1 mr-2 text-xs"></i> Nhận diện "Cá Mập" (Big Boys) và dấu chân của họ.</li>
                 </ul>
+                
+                <!-- PREVIEW BUTTON -->
+                <button onclick="openSlideModal()" class="w-full py-3 bg-gray-100 hover:bg-trade-blue hover:text-white text-trade-blue font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-trade-blue">
+                    <i class="fa-regular fa-play-circle text-lg"></i> Xem Slide Bài Giảng
+                </button>
             </div>
 
             <!-- Buổi 2 -->
@@ -174,7 +178,7 @@
                 </ul>
             </div>
 
-            <!-- Buổi 7 (Mới) -->
+            <!-- Buổi 7 -->
             <div class="bg-white p-8 border border-gray-200 hover:border-trade-blue transition-all group shadow-sm hover:shadow-xl border-l-4 border-l-trade-yellow">
                 <div class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Buổi 07 (Nâng Cao)</div>
                 <h3 class="text-xl font-bold text-trade-blue mb-4 group-hover:text-trade-yellow transition-colors">Kỹ thuật nâng cao trong giao dịch</h3>
@@ -185,7 +189,7 @@
                 </ul>
             </div>
 
-            <!-- Buổi 8 (Mới) -->
+            <!-- Buổi 8 -->
             <div class="bg-white p-8 border border-gray-200 hover:border-trade-blue transition-all group shadow-sm hover:shadow-xl border-l-4 border-l-trade-yellow">
                 <div class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Buổi 08 (Nâng Cao)</div>
                 <h3 class="text-xl font-bold text-trade-blue mb-4 group-hover:text-trade-yellow transition-colors">Quy trình giao dịch trong ngày (Intraday)</h3>
@@ -198,80 +202,73 @@
             </div>
         </div>
 
-        <!-- Student Benefits (Mobile Optimized) -->
+        <!-- Student Benefits -->
         <div class="mb-20">
             <h2 class="text-3xl font-black text-trade-blue uppercase mb-12 text-center">Quyền Lợi Học Viên</h2>
-            <!-- Grid 2 columns on mobile/tablet, 4 columns on desktop -->
-            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Benefit 1 -->
-                <div class="bg-gray-50 p-4 md:p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
-                    <div class="w-10 h-10 md:w-14 md:h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:border-trade-yellow transition-colors">
-                        <i class="fa-solid fa-user-graduate text-lg md:text-2xl text-trade-blue"></i>
+                <div class="bg-gray-50 p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
+                    <div class="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-trade-yellow transition-colors">
+                        <i class="fa-solid fa-user-graduate text-2xl text-trade-blue"></i>
                     </div>
-                    <h4 class="font-bold text-trade-blue mb-1 md:mb-2 text-sm md:text-base">Mentor 1-1</h4>
-                    <p class="text-xs md:text-sm text-gray-500">Hỗ trợ kiến thức và tư duy giao dịch trực tiếp.</p>
+                    <h4 class="font-bold text-trade-blue mb-2">Mentor 1-1</h4>
+                    <p class="text-sm text-gray-500">Hỗ trợ kiến thức và tư duy giao dịch trực tiếp.</p>
                 </div>
                 <!-- Benefit 2 -->
-                <div class="bg-gray-50 p-4 md:p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
-                    <div class="w-10 h-10 md:w-14 md:h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:border-trade-yellow transition-colors">
-                        <i class="fa-solid fa-chart-line text-lg md:text-2xl text-trade-blue"></i>
+                <div class="bg-gray-50 p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
+                    <div class="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-trade-yellow transition-colors">
+                        <i class="fa-solid fa-chart-line text-2xl text-trade-blue"></i>
                     </div>
-                    <h4 class="font-bold text-trade-blue mb-1 md:mb-2 text-sm md:text-base">Indicator Độc Quyền</h4>
-                    <p class="text-xs md:text-sm text-gray-500">Truy cập bộ công cụ Scalping độc quyền từ Nhà Trade Học.</p>
+                    <h4 class="font-bold text-trade-blue mb-2">Indicator Độc Quyền</h4>
+                    <p class="text-sm text-gray-500">Truy cập bộ công cụ Scalping độc quyền từ Nhà Trade Học.</p>
                 </div>
                 <!-- Benefit 3 -->
-                <div class="bg-gray-50 p-4 md:p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
-                    <div class="w-10 h-10 md:w-14 md:h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:border-trade-yellow transition-colors">
-                        <i class="fa-solid fa-users text-lg md:text-2xl text-trade-blue"></i>
+                <div class="bg-gray-50 p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
+                    <div class="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-trade-yellow transition-colors">
+                        <i class="fa-solid fa-users text-2xl text-trade-blue"></i>
                     </div>
-                    <h4 class="font-bold text-trade-blue mb-1 md:mb-2 text-sm md:text-base">Ưu Tiên Copy Trade</h4>
-                    <p class="text-xs md:text-sm text-gray-500">Slot ưu tiên dịch vụ Copy Trade (Q2/2026).</p>
+                    <h4 class="font-bold text-trade-blue mb-2">Ưu Tiên Copy Trade</h4>
+                    <p class="text-sm text-gray-500">Slot ưu tiên dịch vụ Copy Trade (Q2/2026).</p>
                 </div>
                 <!-- Benefit 4 -->
-                <div class="bg-gray-50 p-4 md:p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
-                    <div class="w-10 h-10 md:w-14 md:h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:border-trade-yellow transition-colors">
-                        <i class="fa-regular fa-file-pdf text-lg md:text-2xl text-trade-blue"></i>
+                <div class="bg-gray-50 p-6 border border-gray-100 hover:border-trade-blue transition-colors rounded-lg text-center group">
+                    <div class="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-trade-yellow transition-colors">
+                        <i class="fa-regular fa-file-pdf text-2xl text-trade-blue"></i>
                     </div>
-                    <h4 class="font-bold text-trade-blue mb-1 md:mb-2 text-sm md:text-base">Outlook Report</h4>
-                    <p class="text-xs md:text-sm text-gray-500">Nhận báo cáo phân tích thị trường chi tiết mỗi tháng.</p>
+                    <h4 class="font-bold text-trade-blue mb-2">Outlook Report</h4>
+                    <p class="text-sm text-gray-500">Nhận báo cáo phân tích thị trường chi tiết mỗi tháng.</p>
                 </div>
             </div>
         </div>
 
-        <!-- NEW: Pricing & Flash Sale (Optimized for Mobile) -->
-        <div id="chi-phi" class="text-center bg-trade-blue text-white p-6 md:p-12 relative overflow-hidden shadow-brutal-yellow rounded-lg mx-auto max-w-4xl">
+        <!-- NEW: Pricing & Flash Sale -->
+        <div class="text-center bg-trade-blue text-white p-12 relative overflow-hidden shadow-brutal-yellow rounded-lg mx-auto max-w-4xl">
             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
             
-            <h2 class="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-8 relative z-10">Chi Phí Khóa Học</h2>
+            <h2 class="text-3xl font-black uppercase mb-8 relative z-10">Chi Phí Khóa Học</h2>
             
-            <div class="mb-8 md:mb-10 relative z-10 inline-block">
-                <!-- Stack prices on mobile, inline on desktop -->
-                <div class="flex flex-col md:flex-row items-center justify-center md:items-baseline">
-                    <span class="text-gray-400 line-through text-xl md:text-2xl font-bold mb-2 md:mb-0 md:mr-4">15.000.000đ</span>
-                    
-                    <div class="relative inline-block mt-2 md:mt-0">
-                        <!-- Giá: Responsive text size -->
-                        <span class="text-trade-yellow text-4xl md:text-6xl font-black tracking-tight font-numbers block md:inline">11.250.000đ</span>
-                        
-                        <!-- Nhãn Flash Sale: Adjusted position for mobile -->
-                        <span class="absolute -top-6 -right-8 md:-top-6 md:-right-12 bg-red-600 text-white text-[10px] md:text-sm font-black px-3 py-1 uppercase transform rotate-12 shadow-lg border-2 border-white animate-pulse z-20 whitespace-nowrap">
-                            Flash Sale -25%
-                        </span>
-                    </div>
+            <div class="mb-10 relative z-10 inline-block">
+                <span class="text-gray-400 line-through text-2xl font-bold mr-4 block md:inline">15.000.000đ</span>
+                <div class="relative inline-block">
+                    <!-- Giá -->
+                    <span class="text-trade-yellow text-6xl font-black tracking-tight font-numbers">11.250.000đ</span>
+                    <!-- Nhãn Flash Sale đè lên giá -->
+                    <span class="absolute -top-6 -right-12 bg-red-600 text-white text-sm font-black px-4 py-1 uppercase transform rotate-12 shadow-lg border-2 border-white animate-pulse z-20 whitespace-nowrap">
+                        Flash Sale -25%
+                    </span>
                 </div>
             </div>
 
             <!-- Countdown Timer -->
-            <div class="mb-8 md:mb-10 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 relative z-10">
-                <p class="text-xs uppercase tracking-widest font-bold text-gray-300 md:mr-2">Ưu đãi kết thúc sau:</p>
-                <!-- Smaller font on mobile -->
-                <div id="countdown" class="text-2xl md:text-4xl font-black text-white tracking-tight bg-white/10 px-4 py-2 md:px-6 md:py-3 rounded border border-white/20 shadow-inner font-numbers w-full md:w-auto text-center">
+            <div class="mb-10 flex justify-center items-center gap-4 relative z-10">
+                <p class="text-xs uppercase tracking-widest font-bold text-gray-300 mr-2 self-center">Ưu đãi kết thúc sau:</p>
+                <div id="countdown" class="text-4xl font-black text-white tracking-widest font-mono bg-white/10 px-6 py-3 rounded border border-white/20 shadow-inner font-numbers">
                     00:00:00:00
                 </div>
             </div>
 
             <div class="relative z-10">
-                <button onclick="openPaymentModal()" class="w-full md:w-auto inline-flex justify-center items-center px-8 py-4 md:px-12 md:py-5 bg-trade-yellow text-trade-blue font-black uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(255,223,43,0.5)] cursor-pointer rounded-sm text-sm md:text-base">
+                <button onclick="openPaymentModal()" class="inline-flex items-center px-12 py-5 bg-trade-yellow text-trade-blue font-black uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(255,223,43,0.5)] cursor-pointer rounded-sm">
                     ĐĂNG KÝ NGAY <i class="fa-solid fa-bolt ml-3"></i>
                 </button>
                 <p class="mt-4 text-xs text-gray-400 italic">Dành riêng cho khách hàng lần đầu truy cập.</p>
@@ -316,6 +313,30 @@
         </div>
     </footer>
 
+    <!-- SLIDE MODAL (Canva Embed) -->
+    <div id="slideModal" class="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button onclick="closeSlideModal()" class="absolute top-4 right-4 text-white hover:text-trade-yellow transition-colors z-50 p-4">
+            <i class="fa-solid fa-times text-3xl"></i>
+        </button>
+
+        <div class="w-full h-full max-w-7xl max-h-[90vh] flex flex-col justify-center items-center relative p-4" id="slideContainer">
+            <div class="w-full relative shadow-2xl border border-gray-800 rounded-lg overflow-hidden bg-black">
+                <!-- Canva Embed Code -->
+                <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+                 padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0; margin-bottom: 0; overflow: hidden;
+                 border-radius: 8px; will-change: transform;">
+                  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGRSQ_zeWg/cppvkBqXFcolZPr2hw5cMg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                  </iframe>
+                </div>
+            </div>
+            <a href="https://www.canva.com/design/DAGRSQ_zeWg/cppvkBqXFcolZPr2hw5cMg/watch?utm_content=DAGRSQ_zeWg&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="text-gray-500 hover:text-white transition-colors text-xs mt-4">
+                Mở trong tab mới (Canva)
+            </a>
+        </div>
+    </div>
+
     <!-- Payment Modal -->
     <div id="paymentModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-lg mx-4 relative shadow-2xl transform scale-95 transition-transform duration-300 border-2 border-trade-yellow rounded-lg overflow-hidden" id="paymentModalContent">
@@ -328,9 +349,8 @@
                 
                 <!-- Payment Method Tabs -->
                 <div class="flex justify-center mb-8 border-b border-gray-200">
-                    <button onclick="switchTab('bank')" id="tab-bank" class="w-1/3 pb-3 font-bold text-trade-blue border-b-4 border-trade-blue focus:outline-none transition-all text-sm md:text-base">Banking VN</button>
-                    <button onclick="switchTab('usdt')" id="tab-usdt" class="w-1/3 pb-3 font-bold text-gray-400 hover:text-trade-blue focus:outline-none transition-all text-sm md:text-base">USDT (BEP20)</button>
-                    <button onclick="switchTab('binance')" id="tab-binance" class="w-1/3 pb-3 font-bold text-gray-400 hover:text-trade-blue focus:outline-none transition-all text-sm md:text-base">Binance Pay</button>
+                    <button onclick="switchTab('bank')" id="tab-bank" class="w-1/2 pb-3 font-bold text-trade-blue border-b-4 border-trade-blue focus:outline-none transition-all">Banking VN</button>
+                    <button onclick="switchTab('usdt')" id="tab-usdt" class="w-1/2 pb-3 font-bold text-gray-400 hover:text-trade-blue focus:outline-none transition-all">USDT (BEP20)</button>
                 </div>
 
                 <!-- Bank Content -->
@@ -347,7 +367,7 @@
                         <div class="flex justify-between mb-2">
                             <span class="text-gray-500 text-xs uppercase font-bold">Số tài khoản</span>
                             <div class="flex items-center">
-                                <span class="font-mono font-bold text-base md:text-lg text-trade-blue mr-2">6896 8925 9999</span>
+                                <span class="font-mono font-bold text-lg text-trade-blue mr-2">6896 8925 9999</span>
                                 <i class="fa-regular fa-copy text-gray-400 hover:text-trade-blue cursor-pointer" onclick="copyText('689689259999')"></i>
                             </div>
                         </div>
@@ -360,12 +380,12 @@
                     <div class="bg-yellow-50 p-4 rounded-lg text-left border border-yellow-200">
                         <p class="text-xs text-gray-500 font-bold uppercase mb-1">Nội dung chuyển khoản (Bắt buộc):</p>
                         <div class="flex items-center justify-between bg-white p-2 border border-yellow-300 rounded mb-2">
-                            <span class="font-mono font-bold text-trade-blue text-sm md:text-base">KHDT_TEN_SDT</span>
-                            <span class="text-[10px] md:text-xs text-gray-400 italic">(Vui lòng thay thế TEN và SDT của bạn)</span>
+                            <span class="font-mono font-bold text-trade-blue">KHDT_TEN_SDT</span>
+                            <span class="text-xs text-gray-400 italic">(Vui lòng thay thế TEN và SDT của bạn)</span>
                         </div>
                         <div class="flex justify-between items-center mt-3">
                             <span class="text-xs text-gray-500 font-bold uppercase">Số tiền cần thanh toán:</span>
-                            <span class="font-bold text-lg md:text-xl text-red-600 font-numbers" id="bankAmount">11,250,000 VND</span>
+                            <span class="font-bold text-xl text-red-600 font-numbers" id="bankAmount">11,250,000 VND</span>
                         </div>
                     </div>
                 </div>
@@ -373,8 +393,7 @@
                 <!-- USDT Content -->
                 <div id="content-usdt" class="payment-content hidden text-center">
                     <div class="bg-gray-100 p-2 inline-block border border-gray-200 mb-4 rounded-lg">
-                        <!-- Updated to use local images for specific amounts -->
-                        <img src="" alt="USDT QR" class="w-48 h-48 object-contain mx-auto" id="usdtQRImage">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x0b0661895a815cd929af65bcad8d55527d86f763" alt="USDT QR" class="w-48 h-48 object-contain mx-auto">
                     </div>
 
                     <div class="bg-blue-50 p-4 rounded-lg mb-4 text-left border border-blue-100">
@@ -385,45 +404,17 @@
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
-                        <!-- Updated Warning Text -->
-                        <p class="text-[10px] text-red-500 mt-1 italic font-medium">*Chỉ gửi USDT mạng BEP20 (BSC). Vui lòng KIỂM TRA THẬT KỸ địa chỉ nhận tiền trước khi gửi</p>
+                        <p class="text-[10px] text-red-500 mt-1 italic">*Chỉ gửi USDT mạng BEP20 (BSC). Gửi sai mạng sẽ mất tiền.</p>
                     </div>
 
                     <div class="bg-yellow-50 p-4 rounded-lg text-left border border-yellow-200 flex justify-between items-center">
                         <span class="text-xs text-gray-500 font-bold uppercase">Số tiền cần thanh toán:</span>
-                        <span class="font-bold text-lg md:text-xl text-red-600 font-numbers" id="usdtAmount">420 USDT</span>
-                    </div>
-                </div>
-
-                <!-- Binance Pay Content (New) -->
-                <div id="content-binance" class="payment-content hidden text-center">
-                    <div class="bg-gray-100 p-2 inline-block border border-gray-200 mb-4 rounded-lg">
-                        <!-- Using same QR images logic -->
-                        <img src="" alt="Binance Pay QR" class="w-48 h-48 object-contain mx-auto" id="binanceQRImage">
-                    </div>
-
-                    <div class="bg-blue-50 p-4 rounded-lg mb-4 text-left border border-blue-100">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-500 text-xs uppercase font-bold">Phương thức</span>
-                            <span class="font-bold text-trade-blue">Binance Pay</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-500 text-xs uppercase font-bold">Binance ID</span>
-                            <div class="flex items-center">
-                                <span class="font-mono font-bold text-base md:text-lg text-trade-blue mr-2">203128884</span>
-                                <i class="fa-regular fa-copy text-gray-400 hover:text-trade-blue cursor-pointer" onclick="copyText('203128884')"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-yellow-50 p-4 rounded-lg text-left border border-yellow-200 flex justify-between items-center">
-                        <span class="text-xs text-gray-500 font-bold uppercase">Số tiền cần thanh toán:</span>
-                        <span class="font-bold text-lg md:text-xl text-red-600 font-numbers" id="binanceAmount">420 USDT</span>
+                        <span class="font-bold text-xl text-red-600 font-numbers" id="usdtAmount">420 USDT</span>
                     </div>
                 </div>
 
                  <div class="mt-6 flex justify-center">
-                     <a href="https://t.me/mmto1b" target="_blank" class="inline-flex items-center px-6 py-3 bg-trade-blue text-white font-bold text-sm uppercase rounded hover:bg-trade-yellow hover:text-trade-blue transition-colors w-full md:w-auto justify-center">
+                     <a href="https://t.me/mmto1b" target="_blank" class="inline-flex items-center px-6 py-3 bg-trade-blue text-white font-bold text-sm uppercase rounded hover:bg-trade-yellow hover:text-trade-blue transition-colors">
                         <i class="fa-brands fa-telegram mr-2"></i> Liên hệ Admin sau khi chuyển khoản
                      </a>
                  </div>
@@ -477,15 +468,9 @@
         // --- PAYMENT MODAL LOGIC ---
         const modal = document.getElementById('paymentModal');
         const modalContent = document.getElementById('paymentModalContent');
-        
         const bankAmount = document.getElementById('bankAmount');
-        const bankQR = document.getElementById('bankQRImage');
-
         const usdtAmount = document.getElementById('usdtAmount');
-        const usdtQR = document.getElementById('usdtQRImage');
-
-        const binanceAmount = document.getElementById('binanceAmount');
-        const binanceQR = document.getElementById('binanceQRImage');
+        const bankQR = document.getElementById('bankQRImage');
 
         function openPaymentModal() {
             const endTime = getEndTime();
@@ -496,28 +481,15 @@
             const bankBin = '970407'; 
             const bankNumber = '689689259999';
             const accountName = 'BUI THANH CONG';
-            
-            // STATIC SETTING FOR USDT
-            usdtQR.src = "usdt.jpg";
 
             if (isDiscounted) {
-                // Discounted Price
                 bankAmount.innerText = "11,250,000 VND";
                 usdtAmount.innerText = "420 USDT";
-                binanceAmount.innerText = "420 USDT";
-                
                 bankQR.src = `https://img.vietqr.io/image/${bankBin}-${bankNumber}-compact2.png?amount=11250000&addInfo=KHDT_TEN_SDT&accountName=${encodeURIComponent(accountName)}`;
-                // Update specific QR images for Binance
-                binanceQR.src = "420.jpg";
             } else {
-                // Original Price
                 bankAmount.innerText = "15,000,000 VND";
                 usdtAmount.innerText = "555 USDT";
-                binanceAmount.innerText = "555 USDT";
-                
                 bankQR.src = `https://img.vietqr.io/image/${bankBin}-${bankNumber}-compact2.png?amount=15000000&addInfo=KHDT_TEN_SDT&accountName=${encodeURIComponent(accountName)}`;
-                // Update specific QR images for Binance
-                binanceQR.src = "555.jpg";
             }
 
             modal.classList.remove('hidden');
@@ -540,32 +512,23 @@
         function switchTab(type) {
             const btnBank = document.getElementById('tab-bank');
             const btnUsdt = document.getElementById('tab-usdt');
-            const btnBinance = document.getElementById('tab-binance');
-            
             const contentBank = document.getElementById('content-bank');
             const contentUsdt = document.getElementById('content-usdt');
-            const contentBinance = document.getElementById('content-binance');
 
-            // Reset all
-            [btnBank, btnUsdt, btnBinance].forEach(btn => {
-                btn.classList.remove('border-b-4', 'border-trade-blue', 'text-trade-blue');
-                btn.classList.add('text-gray-400');
-            });
-            [contentBank, contentUsdt, contentBinance].forEach(content => content.classList.add('hidden'));
-
-            // Activate specific
             if (type === 'bank') {
                 btnBank.classList.add('border-b-4', 'border-trade-blue', 'text-trade-blue');
                 btnBank.classList.remove('text-gray-400');
+                btnUsdt.classList.remove('border-b-4', 'border-trade-blue', 'text-trade-blue');
+                btnUsdt.classList.add('text-gray-400');
                 contentBank.classList.remove('hidden');
-            } else if (type === 'usdt') {
+                contentUsdt.classList.add('hidden');
+            } else {
                 btnUsdt.classList.add('border-b-4', 'border-trade-blue', 'text-trade-blue');
                 btnUsdt.classList.remove('text-gray-400');
+                btnBank.classList.remove('border-b-4', 'border-trade-blue', 'text-trade-blue');
+                btnBank.classList.add('text-gray-400');
                 contentUsdt.classList.remove('hidden');
-            } else if (type === 'binance') {
-                btnBinance.classList.add('border-b-4', 'border-trade-blue', 'text-trade-blue');
-                btnBinance.classList.remove('text-gray-400');
-                contentBinance.classList.remove('hidden');
+                contentBank.classList.add('hidden');
             }
         }
 
@@ -582,9 +545,38 @@
                 closePaymentModal();
             }
         });
+
+        // --- SLIDE MODAL LOGIC (Simplified for Embed) ---
+        const slideModal = document.getElementById('slideModal');
+
+        function openSlideModal() {
+            slideModal.classList.remove('hidden');
+            setTimeout(() => slideModal.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeSlideModal() {
+            slideModal.classList.add('opacity-0');
+            setTimeout(() => {
+                slideModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Close on click outside
+        slideModal.addEventListener('click', (e) => {
+            if (e.target === slideModal || e.target.id === 'slideContainer') {
+                closeSlideModal();
+            }
+        });
+        
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !slideModal.classList.contains('hidden')) {
+                closeSlideModal();
+            }
+        });
     </script>
 
 </body>
 </html>
-
-
