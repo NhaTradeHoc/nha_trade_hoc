@@ -108,19 +108,59 @@
             <button class="filter-btn active px-6 py-2 border border-trade-blue text-trade-blue rounded-full font-bold text-sm uppercase hover:bg-trade-blue hover:text-white transition-all" data-filter="all">Tất Cả</button>
             <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="huong-dan">Hướng Dẫn</button>
             <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="tu-duy">Tư Duy</button>
-            <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="tam-ly">Tâm Lý</button>
+            <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="vi-mo">Vĩ Mô</button>
+            <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="dia-chinh-tri">Địa Chính Trị</button>
             <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="phuong-phap">Phương Pháp</button>
+            <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="tam-ly">Tâm Lý</button>
             <button class="filter-btn px-6 py-2 border border-gray-300 text-gray-500 rounded-full font-bold text-sm uppercase hover:border-trade-blue hover:text-trade-blue transition-all" data-filter="bao-cao">Báo Cáo</button>
         </div>
 
         <!-- Articles Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
             
-            <!-- Article 1: Hướng dẫn -->
+            <!-- Article 1: Greenland (Vĩ Mô / Địa Chính Trị) -->
+            <article class="filter-item vi-mo dia-chinh-tri group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                <a href="sau-venezuela-la-greenland.html" class="block flex-1 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" alt="Greenland Geopolitics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-trade-blue px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md">Địa Chính Trị</div>
+                        <div class="absolute top-4 right-4 bg-red-600 px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md animate-pulse">Mới</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-trade-blue mb-3 group-hover:text-trade-light-blue transition-colors line-clamp-2">Sau Venezuela Là Greenland?</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3 flex-1">Từ Caracas đến Nuuk - Sự hồi sinh của Học thuyết Monroe. Mỹ sẽ không chấp nhận bất kỳ sự hiện diện thù địch nào tại Tây Bán Cầu.</p>
+                        <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase tracking-wider mt-auto pt-4 border-t border-gray-100">
+                            <span><i class="fa-regular fa-calendar mr-2"></i>15 Jan 2026</span>
+                            <span>10 phút đọc</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Article 2: Canh Bạc Dầu Mỏ (Vĩ Mô / Địa Chính Trị) -->
+            <article class="filter-item vi-mo dia-chinh-tri group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                <a href="canh-bac-dau-mo-venezuela.html" class="block flex-1 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574352067721-72d5913ee35c?q=80&w=1200&auto=format&fit=crop" alt="Oil Rigs Venezuela" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-trade-blue px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md">Vĩ Mô</div>
+                        <div class="absolute top-4 right-4 bg-red-600 px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md animate-pulse">Hot</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-trade-blue mb-3 group-hover:text-trade-light-blue transition-colors line-clamp-2">Canh Bạc Dầu Mỏ Khổng Lồ Của Donald Trump Tại Venezuela</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3 flex-1">Quốc gia này sở hữu trữ lượng dầu mỏ lớn nhất thế giới, nhưng việc đưa chúng lên khỏi mặt đất sẽ là một hành trình đầy gian nan.</p>
+                        <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase tracking-wider mt-auto pt-4 border-t border-gray-100">
+                            <span><i class="fa-regular fa-calendar mr-2"></i>07 Jan 2026</span>
+                            <span>6 phút đọc</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Article 3: Hướng dẫn -->
             <article class="filter-item huong-dan group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
                 <a href="cai-dat-backcom-exness.html" class="block flex-1 flex flex-col">
                     <div class="relative h-56 overflow-hidden">
-                        <img src="65363243f185eaef8f80db604be3961d.jpeg" alt="Exness Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1200&auto=format&fit=crop" alt="Exness Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute top-4 left-4 bg-trade-blue px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md">Hướng Dẫn</div>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
@@ -134,7 +174,7 @@
                 </a>
             </article>
 
-            <!-- Article 2: Tư duy -->
+            <!-- Article 4: Tư duy -->
             <article class="filter-item tu-duy group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
                 <a href="trading-la-toan-hoc.html" class="block flex-1 flex flex-col">
                     <div class="relative h-56 overflow-hidden">
@@ -152,9 +192,26 @@
                 </a>
             </article>
 
-            <!-- Article 3: Tâm lý -->
+            <!-- Article 5: Phương pháp (Demo) -->
+            <article class="filter-item phuong-phap group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                <a href="#" class="block flex-1 flex flex-col">
+                    <div class="relative h-56 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-candlestick text-6xl text-gray-300"></i>
+                        <div class="absolute top-4 left-4 bg-green-600 px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md">Phương Pháp</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-trade-blue mb-3 group-hover:text-trade-light-blue transition-colors line-clamp-2">Price Action nâng cao: Đọc hiểu nến Pinbar</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3 flex-1">Không phải mọi cây nến Pinbar đều là tín hiệu đảo chiều. Học cách lọc tín hiệu nhiễu bằng cấu trúc thị trường.</p>
+                        <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase tracking-wider mt-auto pt-4 border-t border-gray-100">
+                            <span><i class="fa-regular fa-calendar mr-2"></i>15 Dec 2025</span>
+                            <span>6 phút đọc</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Article 6: Tâm lý (Demo) -->
             <article class="filter-item tam-ly group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
-                <!-- Using placeholder link # for demo articles -->
                 <a href="#" class="block flex-1 flex flex-col">
                     <div class="relative h-56 overflow-hidden">
                         <img src="fomo.jpg" alt="FOMO" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -171,26 +228,7 @@
                 </a>
             </article>
 
-            <!-- Article 4: Phương pháp (Demo) -->
-            <article class="filter-item phuong-phap group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
-                <a href="#" class="block flex-1 flex flex-col">
-                    <div class="relative h-56 overflow-hidden bg-gray-200 flex items-center justify-center">
-                        <!-- Placeholder Image -->
-                        <i class="fa-solid fa-chart-candlestick text-6xl text-gray-300"></i>
-                        <div class="absolute top-4 left-4 bg-green-600 px-3 py-1 text-white text-xs font-bold uppercase rounded shadow-md">Phương Pháp</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-xl font-bold text-trade-blue mb-3 group-hover:text-trade-light-blue transition-colors line-clamp-2">Price Action nâng cao: Đọc hiểu nến Pinbar</h3>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3 flex-1">Không phải mọi cây nến Pinbar đều là tín hiệu đảo chiều. Học cách lọc tín hiệu nhiễu bằng cấu trúc thị trường.</p>
-                        <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase tracking-wider mt-auto pt-4 border-t border-gray-100">
-                            <span><i class="fa-regular fa-calendar mr-2"></i>15 Dec 2025</span>
-                            <span>6 phút đọc</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Article 5: Báo cáo (Demo) -->
+            <!-- Article 7: Báo cáo (Demo) -->
             <article class="filter-item bao-cao group cursor-pointer hover-lift flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all">
                 <a href="#" class="block flex-1 flex flex-col">
                     <div class="relative h-56 overflow-hidden bg-gray-200 flex items-center justify-center">
