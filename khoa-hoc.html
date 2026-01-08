@@ -435,39 +435,65 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12 text-white">
-        <!-- ... Footer Content ... -->
-         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Footer (Matched Index) -->
+    <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- About -->
                 <div class="lg:col-span-2 pr-8">
                     <div class="flex items-center gap-3 mb-8">
                         <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
                     </div>
-                    <p class="text-gray-400 mb-8 leading-relaxed max-w-md text-sm border-l border-white/20 pl-4">Chúng tôi không hứa hẹn làm giàu nhanh chóng. Chúng tôi cung cấp kiến thức chuẩn, công cụ đúng và tư duy kỷ luật.</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed max-w-md text-sm border-l border-white/20 pl-4">
+                        Chúng tôi không hứa hẹn làm giàu nhanh chóng. Chúng tôi cung cấp kiến thức chuẩn, công cụ đúng và tư duy kỷ luật.
+                    </p>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/cosmic.prophet259/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-                        <a href="https://www.tiktok.com/@nha_trade_hoc_academy" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300"><i class="fa-brands fa-tiktok text-lg"></i></a>
-                        <a href="https://www.youtube.com/@NhaTradeHoc" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300"><i class="fa-brands fa-youtube text-lg"></i></a>
+                        <a href="https://www.facebook.com/cosmic.prophet259/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nha_trade_hoc_academy" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-tiktok text-lg"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@NhaTradeHoc" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
                     </div>
                 </div>
+
+                <!-- Quick Links -->
                 <div>
                     <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên kết</h4>
-                    <ul class="space-y-4 text-sm text-gray-400">
-                        <li><a href="index.html" class="hover:text-trade-yellow">Trang Chủ</a></li>
-                        <li><a href="hoan-phi.html" class="hover:text-trade-yellow">Hoàn Phí</a></li>
+                    <ul class="space-y-4">
+                        <li><a href="index.html#hoan-phi" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cơ chế hoàn phí</a></li>
+                        <li><a href="index.html#dich-vu" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Khóa học thực chiến</a></li>
+                        <li><a href="index.html#cong-dong" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cộng đồng Telegram</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Điều khoản sử dụng</a></li>
                     </ul>
                 </div>
+
+                <!-- Contact -->
                 <div>
                     <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên hệ</h4>
-                    <ul class="space-y-4 text-sm text-gray-400">
-                        <li>contact.nhatradehoc@gmail.com</li>
-                        <li>Hà Nội, Việt Nam</li>
+                    <ul class="space-y-4">
+                        <li class="flex items-start text-sm text-gray-400">
+                            <i class="fa-solid fa-envelope mt-1 mr-3 text-trade-yellow"></i>
+                            contact.nhatradehoc@gmail.com
+                        </li>
+                        <li class="flex items-start text-sm text-gray-400">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-trade-yellow"></i>
+                            Hà Nội, Việt Nam
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 text-center opacity-50">
-                <p class="text-xs">© 2026 Nhà Trade Học. All rights reserved.</p>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center opacity-50 hover:opacity-100 transition-opacity">
+                <p class="text-gray-500 text-xs mb-4 md:mb-0 uppercase tracking-widest">
+                    © 2026 Nhà Trade Học. All rights reserved.
+                </p>
+                <p class="text-gray-600 text-xs italic">
+                    Giao dịch tài chính tiềm ẩn rủi ro.
+                </p>
             </div>
         </div>
     </footer>
