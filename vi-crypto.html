@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví Crypto: Phân biệt Ví Nóng, Ví Lạnh và Nguyên tắc bảo mật "Bất khả xâm phạm"</title>
+    <meta name="description" content="Hướng dẫn phân biệt Ví nóng (Hot Wallet) và Ví lạnh (Cold Wallet). Giải thích khái niệm Seed Phrase và cách bảo vệ tài sản Crypto an toàn tuyệt đối trước hacker.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trade-blue': '#00167c',
+                        'trade-light-blue': '#1e40af', 
+                        'trade-dark': '#020617', 
+                        'trade-yellow': '#ffdf2b',
+                        'trade-white': '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px rgba(255, 255, 255, 0.2)',
+                        'brutal-dark': '4px 4px 0px 0px rgba(0, 22, 124, 0.1)',
+                        'brutal-yellow': '4px 4px 0px 0px #ffdf2b',
+                        'brutal-blue': '4px 4px 0px 0px #00167c',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Style cho ảnh trong bài viết */
+        .prose img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 4px;
+        }
+        .prose img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Custom Table Styles */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+        .custom-table th {
+            background-color: #00167c;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Manrope', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        .custom-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .custom-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .custom-table tr:hover {
+            background-color: #f0f9ff;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-trade-yellow selection:text-trade-blue">
+
+    <nav class="fixed w-full z-50 bg-trade-blue/90 backdrop-blur-md border-b border-white/10 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center group">
+                    <i class="fa-solid fa-arrow-left text-trade-yellow mr-3 group-hover:-translate-x-1 transition-transform"></i>
+                    <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#hoan-phi" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
+                    <a href="index.html#dich-vu" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
+                    <a href="kien-thuc.html" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
+                    <a href="https://t.me/nhatradehocspace" target="_blank" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Cộng Đồng</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center text-xs uppercase tracking-widest text-gray-400 mb-6 font-bold">
+                <a href="index.html" class="hover:text-trade-blue transition-colors">Home</a>
+                <span class="mx-2">/</span>
+                <a href="kien-thuc.html" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
+                <span class="mx-2">/</span>
+                <span class="text-trade-blue">Crypto Basics</span>
+            </div>
+
+            <h1 class="text-2xl md:text-4xl font-black text-trade-blue mb-8 leading-snug md:leading-tight">
+                VÍ CRYPTO: <br>
+                <span class="bg-trade-yellow px-2 inline-block mt-2 text-trade-blue">PHÂN BIỆT VÍ NÓNG, VÍ LẠNH</span> <br>
+                VÀ NGUYÊN TẮC BẢO MẬT "BẤT KHẢ XÂM PHẠM"
+            </h1>
+
+            <div class="flex items-center justify-between border-y border-gray-100 py-4 mb-8 text-sm text-gray-500">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-trade-blue text-white flex items-center justify-center font-bold rounded-full">N</div>
+                    <span class="font-bold text-trade-blue">Nhà Trade Học</span>
+                </div>
+                <div>25 Nov 2025 &bull; 12 phút đọc</div>
+            </div>
+            
+            <div class="mb-8">
+                <!-- Hero Image -->
+                <img src="vi0.webp" alt="Phân loại Ví Crypto" class="w-full h-auto border-2 border-trade-blue shadow-lg rounded-lg" onerror="this.src='https://placehold.co/1200x600?text=Vi+Crypto+Banner'">
+            </div>
+        </div>
+    </header>
+
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="prose prose-lg prose-blue mx-auto font-serif text-gray-700 leading-loose">
+            
+            <!-- Intro Block -->
+            <div class="font-sans text-xl font-medium text-gray-900 mb-8 border-l-4 border-trade-yellow pl-6 italic py-2 bg-yellow-50/50">
+                <p class="mb-2">Trong bài trước, chúng ta đã biết Sàn CEX giữ tiền hộ bạn. Nhưng lịch sử Crypto đã chứng kiến những sàn giao dịch lớn (như Mt. Gox hay FTX) sụp đổ chỉ sau một đêm, khiến hàng tỷ USD của người dùng "bốc hơi".</p>
+                <p>Đó là lý do tại sao nguyên tắc vàng trong thế giới này ra đời: <strong>"Not your keys, not your coins"</strong>.</p>
+            </div>
+
+            <p>
+                Để thực sự sở hữu tài sản, bạn cần rút tiền từ sàn về <strong>Ví cá nhân (Non-custodial Wallet)</strong>. Bài viết này sẽ hướng dẫn bạn chọn loại ví phù hợp và cách bảo mật nó để ngay cả hacker giỏi nhất cũng không thể chạm vào tiền của bạn.
+            </p>
+
+            <!-- SECTION 1: CONCEPTS -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">1. Khái niệm cốt lõi: Public Key và Private Key</h2>
+            
+            <p>Trước khi phân loại ví, bạn cần hiểu ví Crypto hoạt động như thế nào. Hãy tưởng tượng ví Crypto giống như tài khoản ngân hàng của bạn, nhưng có 2 loại "chìa khóa":</p>
+            
+            <ul class="list-none space-y-4 mb-6">
+                <li class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <strong><i class="fa-solid fa-eye text-trade-blue mr-2"></i> Public Key (Địa chỉ ví):</strong>
+                    <br>Giống như <em>Số tài khoản ngân hàng</em>. Bạn có thể gửi nó cho bất kỳ ai để họ chuyển tiền cho bạn. Nó thường là một dãy ký tự dài (ví dụ: <code>0x123abc...</code>).
+                </li>
+                <li class="bg-red-50 p-4 rounded-lg border border-red-100">
+                    <strong><i class="fa-solid fa-key text-red-600 mr-2"></i> Private Key / Seed Phrase (Khóa riêng tư):</strong>
+                    <br>Giống như <em>Mật khẩu đăng nhập + Mã OTP</em>. Bất kỳ ai có được chuỗi này đều có toàn quyền kiểm soát tiền trong ví.
+                    <br><span class="text-sm italic text-gray-500 mt-2 block">Seed Phrase thường là chuỗi 12 hoặc 24 từ tiếng Anh ngẫu nhiên (ví dụ: apple, river, sky...). Đây là chìa khóa tổng để khôi phục ví.</span>
+                </li>
+            </ul>
+            
+            <p class="font-bold text-trade-blue text-center bg-gray-100 p-2 rounded">Nhiệm vụ duy nhất của Ví Crypto là lưu trữ và bảo vệ Private Key/Seed Phrase này.</p>
+
+            <!-- Image 1 -->
+            <figure class="my-8">
+                <img src="vi1.jpg" alt="So sánh Public Key và Private Key" onerror="this.src='https://placehold.co/800x400?text=Hinh+Anh+1+Public+vs+Private'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Public Key là hòm thư, Private Key là chìa khóa mở hòm thư</figcaption>
+            </figure>
+
+            <!-- SECTION 2: HOT WALLET -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">2. Ví Nóng (Hot Wallet) - Tiện lợi nhưng cần cẩn trọng</h2>
+            
+            <h3 class="font-sans font-bold text-xl text-trade-blue mt-6 mb-3">Định nghĩa</h3>
+            <p>
+                Ví nóng là các ứng dụng ví phần mềm <strong>luôn kết nối với Internet</strong>. Chúng thường miễn phí và được cài đặt trên điện thoại hoặc trình duyệt máy tính.
+            </p>
+            <p class="text-sm bg-gray-100 p-2 rounded inline-block font-bold text-gray-600 border border-gray-300">
+                <i class="fa-solid fa-mobile-screen mr-2 text-trade-blue"></i> Ví dụ phổ biến: MetaMask, Trust Wallet, Coin98 Super Wallet, Phantom.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <!-- Ưu điểm -->
+                <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+                    <h4 class="font-bold text-green-800 uppercase mb-4 text-sm tracking-wider flex items-center">
+                        <i class="fa-solid fa-thumbs-up mr-2"></i> Ưu điểm
+                    </h4>
+                    <ul class="list-none space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-600 mt-1 mr-3 shrink-0"></i> <span><strong>Miễn phí:</strong> Dễ dàng tải về và tạo ví trong 1 phút.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-600 mt-1 mr-3 shrink-0"></i> <span><strong>Tiện lợi:</strong> Kết nối nhanh với DEX, GameFi, DeFi để giao dịch tức thì.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-600 mt-1 mr-3 shrink-0"></i> <span><strong>Đa năng:</strong> Hỗ trợ hàng ngàn loại coin/token.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Nhược điểm -->
+                <div class="bg-red-50 p-6 rounded-lg border border-red-100">
+                    <h4 class="font-bold text-red-800 uppercase mb-4 text-sm tracking-wider flex items-center">
+                        <i class="fa-solid fa-triangle-exclamation mr-2"></i> Nhược điểm & Rủi ro
+                    </h4>
+                    <ul class="list-none space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-xmark text-red-600 mt-1 mr-3 shrink-0"></i> <span><strong>Bảo mật thấp hơn:</strong> Dễ bị tấn công bởi mã độc (malware), virus hoặc keylogger vì luôn online.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-xmark text-red-600 mt-1 mr-3 shrink-0"></i> <span><strong>Rủi ro người dùng:</strong> Bấm link lạ hoặc cấp quyền bậy bạ là mất sạch tiền.</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="mt-4 italic text-sm text-gray-600"><strong><i class="fa-solid fa-user-tag mr-1"></i> Ai nên dùng?</strong> Dành cho người mới bắt đầu, trader giao dịch hàng ngày, săn kèo airdrop hoặc lưu trữ số tiền nhỏ để chi tiêu.</p>
+
+            <!-- Image 2 -->
+             <figure class="my-8">
+                <img src="vi2.png" alt="Các loại ví nóng phổ biến" onerror="this.src='https://placehold.co/800x400?text=Hinh+Anh+2+Hot+Wallet+Logos'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Giao diện ví nóng (Hot Wallet) trên điện thoại</figcaption>
+            </figure>
+
+            <!-- SECTION 3: COLD WALLET -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">3. Ví Lạnh (Cold Wallet) - Két sắt an toàn tuyệt đối</h2>
+            
+            <h3 class="font-sans font-bold text-xl text-trade-blue mt-6 mb-3">Định nghĩa</h3>
+            <p>
+                Ví lạnh là một <strong>thiết bị phần cứng vật lý</strong> (nhìn giống USB) dùng để lưu trữ Private Key ở trạng thái <strong>ngoại tuyến (Offline)</strong>, hoàn toàn tách biệt với Internet.
+            </p>
+            <p class="text-sm bg-gray-100 p-2 rounded inline-block font-bold text-gray-600 border border-gray-300">
+                <i class="fa-solid fa-hard-drive mr-2 text-trade-blue"></i> Ví dụ phổ biến: Ledger (Nano S/X), Trezor, SafePal.
+            </p>
+
+            <h3 class="font-sans font-bold text-xl text-trade-blue mt-6 mb-3">Cơ chế bảo mật</h3>
+            <p>Khi bạn muốn chuyển tiền, bạn kết nối ví lạnh vào máy tính. Giao dịch được tạo ra trên máy tính, nhưng việc <strong>ký xác nhận (Digital Signature) lại diễn ra bên trong con chip của ví lạnh</strong>. Private Key không bao giờ rời khỏi thiết bị, nên dù máy tính của bạn có đầy virus, hacker cũng không thể lấy được tiền.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <!-- Ưu điểm -->
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <h4 class="font-bold text-blue-800 uppercase mb-4 text-sm tracking-wider flex items-center">
+                        <i class="fa-solid fa-shield-halved mr-2"></i> Ưu điểm
+                    </h4>
+                    <ul class="list-none space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-600 mt-1 mr-3 shrink-0"></i> <span><strong>Bảo mật tối thượng:</strong> Gần như không thể bị hack từ xa.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-600 mt-1 mr-3 shrink-0"></i> <span><strong>Tâm lý vững vàng:</strong> Yên tâm Hold trong nhiều năm không lo sàn sập.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Nhược điểm -->
+                <div class="bg-orange-50 p-6 rounded-lg border border-orange-100">
+                    <h4 class="font-bold text-orange-800 uppercase mb-4 text-sm tracking-wider flex items-center">
+                        <i class="fa-solid fa-sack-dollar mr-2"></i> Nhược điểm
+                    </h4>
+                    <ul class="list-none space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-minus text-orange-600 mt-1 mr-3 shrink-0"></i> <span><strong>Tốn phí:</strong> Phải bỏ tiền mua (1.5tr - 4tr VND).</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-minus text-orange-600 mt-1 mr-3 shrink-0"></i> <span><strong>Bất tiện:</strong> Phải cắm thiết bị, bấm nút vật lý. Không hợp lướt sóng nhanh.</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+             <p class="mt-4 italic text-sm text-gray-600"><strong><i class="fa-solid fa-user-tag mr-1"></i> Ai nên dùng?</strong> Dành cho người đầu tư dài hạn (Hold to die), người có tài sản lớn (từ vài ngàn USD trở lên) muốn an toàn tuyệt đối.</p>
+
+            <!-- Image 3 -->
+             <figure class="my-8">
+                <img src="vi3.jpg" alt="Ví lạnh Ledger và Trezor" onerror="this.src='https://placehold.co/800x400?text=Hinh+Anh+3+Cold+Wallet+Device'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Thiết bị ví lạnh Ledger và Trezor</figcaption>
+            </figure>
+
+            <!-- SECTION 4: COMPARISON -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">4. Bảng so sánh nhanh</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/4">Đặc điểm</th>
+                            <th class="w-1/3 bg-orange-600">Ví Nóng (Hot Wallet)</th>
+                            <th class="w-1/3 bg-blue-800">Ví Lạnh (Cold Wallet)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-trade-blue">Kết nối</td>
+                            <td><i class="fa-solid fa-wifi mr-2"></i> Online (Internet)</td>
+                            <td><i class="fa-solid fa-ban mr-2"></i> Offline (Ngoại tuyến)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-trade-blue">Chi phí</td>
+                            <td>Miễn phí</td>
+                            <td>Tốn phí mua thiết bị</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-trade-blue">Độ an toàn</td>
+                            <td>Trung bình (Dễ dính virus)</td>
+                            <td><span class="text-green-600 font-bold">Rất cao</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-trade-blue">Mục đích</td>
+                            <td>Giao dịch thường xuyên, vốn nhỏ</td>
+                            <td>Lưu trữ lâu dài, vốn lớn</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-trade-blue">Đại diện</td>
+                            <td>MetaMask, Trust Wallet</td>
+                            <td>Ledger, Trezor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SECTION 5: SEED PHRASE SECURITY -->
+            <h2 class="font-sans text-2xl font-bold text-red-600 mt-12 mb-6 uppercase border-b-2 border-red-100 pb-2 flex items-center">
+                <i class="fa-solid fa-triangle-exclamation mr-3"></i> 5. Quy trình tạo ví và lưu trữ Seed Phrase
+            </h2>
+            
+            <div class="border-2 border-red-500 p-6 bg-red-50 rounded-lg mb-8">
+                <p class="font-bold text-red-800 text-lg mb-2">QUAN TRỌNG NHẤT:</p>
+                <p class="text-red-900">Dù bạn dùng ví nóng hay ví lạnh, nếu bạn làm mất 12 từ khóa (Seed Phrase), bạn sẽ mất tiền vĩnh viễn. Không ai, kể cả nhà phát triển ví, có thể cứu bạn.</p>
+            </div>
+
+            <p class="mb-4 font-bold">Hãy tuân thủ quy trình "sinh tồn" sau:</p>
+
+            <div class="space-y-4">
+                <div class="flex">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-trade-blue text-white flex items-center justify-center font-bold mr-4">1</div>
+                    <div>
+                        <h4 class="font-bold text-trade-blue text-lg">Tải ví từ nguồn chính chủ</h4>
+                        <p class="text-sm">Chỉ tải từ trang chủ (ví dụ: metamask.io) hoặc Link tải trên App Store/Google Play có hàng triệu lượt tải. Cảnh báo giả mạo rất nhiều.</p>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-trade-blue text-white flex items-center justify-center font-bold mr-4">2</div>
+                    <div>
+                        <h4 class="font-bold text-trade-blue text-lg">Ghi chép thủ công</h4>
+                        <p class="text-sm">Khi tạo ví, hệ thống sẽ cấp cho bạn 12 (hoặc 24) từ tiếng Anh.</p>
+                        <ul class="mt-2 text-sm space-y-2">
+                            <li class="text-red-600"><i class="fa-solid fa-xmark mr-2"></i> <strong>Tuyệt đối KHÔNG:</strong> Chụp ảnh màn hình, lưu vào Note, gửi Zalo/Mess, lưu trên Cloud/Email. Hacker thường quét các kho ảnh để tìm chuỗi này.</li>
+                            <li class="text-green-600"><i class="fa-solid fa-check mr-2"></i> <strong>Bắt buộc:</strong> Lấy giấy bút, ghi chép cẩn thận ra 2-3 bản giấy. Kiểm tra chính xác từng ký tự và thứ tự.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-trade-blue text-white flex items-center justify-center font-bold mr-4">3</div>
+                    <div>
+                        <h4 class="font-bold text-trade-blue text-lg">Cất giữ bí mật</h4>
+                        <p class="text-sm">Cất các bản ghi giấy này ở những nơi an toàn khác nhau (ví dụ: két sắt, gửi người thân tin cậy). Với ví lạnh, có thể cân nhắc khắc lên tấm kim loại để chống cháy/nước.</p>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-trade-blue text-white flex items-center justify-center font-bold mr-4">4</div>
+                    <div>
+                        <h4 class="font-bold text-trade-blue text-lg">Không bao giờ nhập bừa bãi</h4>
+                        <p class="text-sm">Chỉ nhập 12 từ khóa này khi bạn khôi phục ví trên thiết bị mới hoặc cài lại ứng dụng.</p>
+                        <p class="text-sm text-red-600 font-bold mt-1"><i class="fa-solid fa-ban mr-1"></i> Tuyệt đối KHÔNG nhập lên bất kỳ website nào để "nhận quà", "xác minh ví", hay "hỗ trợ kỹ thuật". Đó 100% là lừa đảo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <figure class="my-8">
+                <img src="vi4.jpg" alt="Ghi chép seed phrase ra giấy" onerror="this.src='https://placehold.co/800x400?text=Hinh+Anh+4+Ghi+Seed+Phrase'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Hãy ghi chép cẩn thận ra giấy, tránh xa thiết bị điện tử</figcaption>
+            </figure>
+
+            <!-- CONCLUSION -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">Tổng kết</h2>
+            <div class="p-8 bg-trade-dark text-white font-sans text-center border-t-4 border-trade-yellow shadow-xl">
+                <p class="text-lg leading-relaxed mb-6">
+                    "Sự an toàn của tài sản nằm trong tay bạn, không phải sàn giao dịch."
+                </p>
+                <ul class="text-left text-sm space-y-3 bg-white/10 p-4 rounded-lg mb-6">
+                    <li><i class="fa-solid fa-angle-right text-trade-yellow mr-2"></i> <strong>Vốn nhỏ/Mới bắt đầu:</strong> Dùng Trust Wallet hoặc MetaMask (trên điện thoại). Nhớ ghi 12 từ khóa ra giấy.</li>
+                    <li><i class="fa-solid fa-angle-right text-trade-yellow mr-2"></i> <strong>Vốn lớn/Hold dài hạn:</strong> Mua ngay một chiếc Ví lạnh (Ledger/Trezor).</li>
+                </ul>
+                
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-gray-400 italic text-sm mb-4">Bài viết tiếp theo:</p>
+                    <a href="stablecoin.html" class="inline-block px-6 py-3 bg-trade-yellow text-trade-blue font-bold uppercase text-sm hover:bg-white hover:text-trade-blue transition-all shadow-lg hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                        Stablecoin (USDT, USDC): Nơi trú ẩn trong bão giá <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- Social Share Section -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div class="border-t-2 border-gray-100 pt-8">
+            <h3 class="text-sm font-bold text-trade-blue uppercase tracking-widest mb-6">Chia sẻ bài viết</h3>
+            <div class="flex gap-4 flex-wrap">
+                <button onclick="shareFacebook()" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Facebook">
+                    <i class="fa-brands fa-facebook-f text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on X">
+                    <i class="fa-brands fa-x-twitter text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://www.threads.net/intent/post?text='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Threads">
+                    <i class="fa-brands fa-threads text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://t.me/share/url?url='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Telegram">
+                    <i class="fa-brands fa-telegram text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép link!')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Copy Link">
+                    <i class="fa-solid fa-link text-xl text-trade-blue"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Posts -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
+        <h3 class="text-2xl font-black text-trade-blue uppercase mb-8 flex items-center">
+            <span class="bg-trade-yellow w-2 h-8 mr-3 block"></span> Bài Viết Liên Quan
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="cex-vs-dex.html" class="group block border-2 border-transparent border-l-4 border-l-trade-blue bg-gray-50 p-6 hover:bg-white hover:border-gray-100 hover:shadow-lg transition-all">
+                <h4 class="font-black text-lg text-trade-blue uppercase group-hover:text-trade-light-blue leading-tight tracking-tight">
+                    Sàn CEX vs DEX: Sự Khác Biệt Cốt Lõi
+                </h4>
+                <div class="mt-3 text-xs font-bold text-gray-400 group-hover:text-trade-yellow transition-colors uppercase tracking-widest flex items-center">
+                    Xem ngay <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+             <a href="huong-dan-nap-rut-p2p.html" class="group block border-2 border-transparent border-l-4 border-l-trade-blue bg-gray-50 p-6 hover:bg-white hover:border-gray-100 hover:shadow-lg transition-all">
+                <h4 class="font-black text-lg text-trade-blue uppercase group-hover:text-trade-light-blue leading-tight tracking-tight">
+                    Hướng Dẫn Nạp Rút P2P An Toàn
+                </h4>
+                <div class="mt-3 text-xs font-bold text-gray-400 group-hover:text-trade-yellow transition-colors uppercase tracking-widest flex items-center">
+                    Xem ngay <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- About -->
+                <div class="lg:col-span-2 pr-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed max-w-md text-sm border-l border-white/20 pl-4">
+                        Chúng tôi không hứa hẹn làm giàu nhanh chóng. Chúng tôi cung cấp kiến thức chuẩn, công cụ đúng và tư duy kỷ luật.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/cosmic.prophet259/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nha_trade_hoc_academy" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-tiktok text-lg"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@NhaTradeHoc" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên kết</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="index.html#hoan-phi" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cơ chế hoàn phí</a></li>
+                        <li><a href="index.html#dich-vu" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Khóa học thực chiến</a></li>
+                        <li><a href="index.html#cong-dong" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cộng đồng Telegram</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên hệ</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-envelope mt-1 mr-3 text-trade-yellow"></i>
+                            contact.nhatradehoc@gmail.com
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-trade-yellow"></i>
+                            Hà Nội, Việt Nam
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center opacity-50 hover:opacity-100 transition-opacity">
+                <p class="text-gray-500 text-xs mb-4 md:mb-0 uppercase tracking-widest">
+                    © 2026 Nhà Trade Học. All rights reserved.
+                </p>
+                <p class="text-gray-600 text-xs italic">
+                    Giao dịch tài chính tiềm ẩn rủi ro.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BROKER INFO MODAL (Standardized) -->
+    <div id="brokerModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-md mx-4 relative shadow-2xl transform scale-95 transition-transform duration-300 border-2 border-trade-yellow" id="modalContent">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute -top-4 -right-4 w-10 h-10 bg-trade-yellow text-trade-blue flex items-center justify-center font-bold shadow-lg hover:bg-white transition-colors">
+                <i class="fa-solid fa-times text-xl"></i>
+            </button>
+            
+            <div class="p-8 text-center">
+                <h3 id="modalTitle" class="text-2xl font-bold uppercase text-trade-blue mb-2">Mở Tài Khoản</h3>
+                <p class="text-xs text-gray-500 mb-6 font-bold uppercase tracking-widest">Partner Info</p>
+                
+                <div class="bg-gray-100 p-4 inline-block border border-gray-200 mb-6">
+                    <img id="modalQR" src="" alt="QR Code" class="w-40 h-40 object-contain">
+                </div>
+                
+                <div class="space-y-4 text-left">
+                    <div>
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-1">Mã Đối Tác (Partner Code)</p>
+                        <div class="flex">
+                            <input type="text" id="modalCode" class="w-full bg-gray-50 border border-gray-300 p-2 text-trade-blue font-bold font-mono text-sm focus:outline-none" readonly>
+                            <button onclick="copyCode()" class="bg-trade-blue text-white px-4 hover:bg-trade-yellow hover:text-trade-blue transition-colors font-bold text-xs uppercase whitespace-nowrap flex items-center">
+                                <i class="fa-regular fa-copy mr-2"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a id="modalLink" href="#" target="_blank" class="block w-full py-4 bg-trade-yellow text-trade-blue font-bold uppercase text-sm hover:bg-trade-blue hover:text-white transition-colors text-center shadow-brutal-blue hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                        Truy cập liên kết đăng ký <i class="fa-solid fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Share Logic Script
+        function shareFacebook() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+            }
+        }
+
+        // Lightbox Logic for real images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.prose img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // --- MODAL LOGIC (Standardized) ---
+        const modal = document.getElementById('brokerModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalQR = document.getElementById('modalQR');
+        const modalCode = document.getElementById('modalCode');
+        const modalLink = document.getElementById('modalLink');
+
+        // Static data for Binance 
+        const binanceData = {
+            name: 'Binance',
+            code: 'NHATRADEHOC',
+            link: 'https://accounts.binance.com/register?ref=NHATRADEHOC'
+        };
+
+        function openModal() {
+            const data = binanceData;
+
+            modalTitle.innerText = `Mở Tài Khoản ${data.name}`;
+            modalCode.value = data.code;
+            modalLink.href = data.link;
+
+            if (data.link !== '#') {
+                modalQR.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.link)}`;
+                modalLink.classList.remove('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Truy cập liên kết đăng ký';
+            } else {
+                modalQR.src = 'https://placehold.co/200x200?text=Updating...'; 
+                modalLink.classList.add('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Đang cập nhật link';
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); 
+        }
+
+        function copyCode() {
+            const copyText = document.getElementById("modalCode");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy"); 
+            
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Copied';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        }
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
