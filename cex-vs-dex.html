@@ -114,6 +114,12 @@
             font-size: 40px;
             cursor: pointer;
         }
+
+        /* Modal Animation */
+        .modal-enter { opacity: 0; transform: scale(0.9); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.9); transition: opacity 0.2s ease, transform 0.2s ease; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-trade-yellow selection:text-trade-blue">
@@ -126,10 +132,10 @@
                     <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
                 </a>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
-                    <a href="#" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
-                    <a href="#" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
-                    <a href="#" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Cộng Đồng</a>
+                    <a href="index.html#hoan-phi" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
+                    <a href="index.html#dich-vu" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
+                    <a href="kien-thuc.html" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
+                    <a href="https://t.me/nhatradehocspace" target="_blank" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Cộng Đồng</a>
                 </div>
             </div>
         </div>
@@ -138,9 +144,9 @@
     <header class="pt-32 pb-12 bg-white relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center text-xs uppercase tracking-widest text-gray-400 mb-6 font-bold">
-                <a href="#" class="hover:text-trade-blue transition-colors">Home</a>
+                <a href="index.html" class="hover:text-trade-blue transition-colors">Home</a>
                 <span class="mx-2">/</span>
-                <a href="#" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
+                <a href="kien-thuc.html" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
                 <span class="mx-2">/</span>
                 <span class="text-trade-blue">Crypto Basics</span>
             </div>
@@ -333,6 +339,25 @@
                     <h3 class="font-sans text-xl font-bold text-trade-blue mt-4 mb-2">Nhập môn (0 - 6 tháng đầu)</h3>
                     <p class="mb-2"><strong>Chỉ sử dụng CEX:</strong> Hãy bắt đầu với các sàn Top 1 thế giới như Binance hoặc OKX. Lý do là giao diện dễ nhìn, thanh khoản tốt và quy trình bảo mật (2FA) giúp bạn tránh các sai lầm ngớ ngẩn ban đầu.</p>
                     <p class="text-sm text-gray-600 italic"><i class="fa-solid fa-bullseye mr-2 text-trade-yellow"></i> <strong>Mục tiêu:</strong> Làm quen với việc đặt lệnh mua/bán (Spot), quan sát biểu đồ, quản lý danh mục đầu tư.</p>
+                    
+                    <!-- ADDED: Binance Account Promo -->
+                    <div class="mt-6 p-6 bg-yellow-50 border-2 border-trade-yellow rounded-lg shadow-sm text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-trade-yellow opacity-20 rounded-full blur-xl -mr-10 -mt-10"></div>
+                        <p class="font-bold text-trade-blue text-lg mb-2 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gift text-red-500 animate-bounce"></i> Ưu đãi độc quyền
+                        </p>
+                        <p class="mb-5 text-sm text-gray-700">
+                            Nếu bạn chưa có tài khoản, hãy mở tài khoản <a href="javascript:void(0)" onclick="openModal()" class="text-trade-blue font-bold underline hover:text-trade-yellow decoration-2 underline-offset-2">tại đây</a> để được giảm phí giao dịch lên đến <span class="font-black text-red-600">40%</span> trọn đời.
+                        </p>
+                        <a href="huong-dan-mo-tai-khoan-binance.html" class="inline-block px-4 py-2 bg-white border border-trade-blue text-trade-blue font-bold text-xs uppercase hover:bg-trade-blue hover:text-white transition-all mb-4">
+                            <i class="fa-solid fa-book-open mr-2"></i> Hướng dẫn chi tiết từng bước tại đây
+                        </a>
+                        <br>
+                        <button onclick="openModal()" class="px-8 py-3 bg-trade-blue text-white font-bold text-sm uppercase rounded shadow-brutal-blue hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                            Mở tài khoản Binance ngay
+                        </button>
+                    </div>
+
                 </div>
 
                 <!-- Giai đoạn 2 -->
@@ -418,45 +443,53 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (REPLACED AS REQUESTED) -->
     <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- About -->
                 <div class="lg:col-span-2 pr-8">
                     <div class="flex items-center gap-3 mb-8">
                         <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
                     </div>
                     <p class="text-gray-400 mb-8 leading-relaxed max-w-md text-sm border-l border-white/20 pl-4">
-                        Kiến thức đúng là tài sản lớn nhất. Chúng tôi giúp bạn đi từ Zero đến Trader thực thụ.
+                        Chúng tôi không hứa hẹn làm giàu nhanh chóng. Chúng tôi cung cấp kiến thức chuẩn, công cụ đúng và tư duy kỷ luật.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                        <a href="https://www.facebook.com/cosmic.prophet259/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
                             <i class="fa-brands fa-facebook-f text-lg"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                        <a href="https://www.tiktok.com/@nha_trade_hoc_academy" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
                             <i class="fa-brands fa-tiktok text-lg"></i>
                         </a>
-                        <a href="#" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                        <a href="https://www.youtube.com/@NhaTradeHoc" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
                             <i class="fa-brands fa-youtube text-lg"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Quick Links -->
                 <div>
                     <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên kết</h4>
                     <ul class="space-y-4 text-sm text-gray-400">
-                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Trang chủ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Kiến thức Crypto</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Phân tích kỹ thuật</a></li>
+                        <li><a href="index.html#hoan-phi" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cơ chế hoàn phí</a></li>
+                        <li><a href="index.html#dich-vu" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Khóa học thực chiến</a></li>
+                        <li><a href="index.html#cong-dong" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cộng đồng Telegram</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Điều khoản sử dụng</a></li>
                     </ul>
                 </div>
 
+                <!-- Contact -->
                 <div>
                     <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên hệ</h4>
                     <ul class="space-y-4 text-sm text-gray-400">
                         <li class="flex items-start">
                             <i class="fa-solid fa-envelope mt-1 mr-3 text-trade-yellow"></i>
                             contact.nhatradehoc@gmail.com
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-trade-yellow"></i>
+                            Hà Nội, Việt Nam
                         </li>
                     </ul>
                 </div>
@@ -467,11 +500,48 @@
                     © 2026 Nhà Trade Học. All rights reserved.
                 </p>
                 <p class="text-gray-600 text-xs italic">
-                    Đầu tư Crypto có rủi ro cao. Hãy tự nghiên cứu kỹ.
+                    Giao dịch tài chính tiềm ẩn rủi ro.
                 </p>
             </div>
         </div>
     </footer>
+
+    <!-- BROKER INFO MODAL (Required for the new button) -->
+    <div id="brokerModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-md mx-4 relative shadow-2xl transform scale-95 transition-transform duration-300 border-2 border-trade-yellow" id="modalContent">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute -top-4 -right-4 w-10 h-10 bg-trade-yellow text-trade-blue flex items-center justify-center font-bold shadow-lg hover:bg-white transition-colors">
+                <i class="fa-solid fa-times text-xl"></i>
+            </button>
+            
+            <div class="p-8 text-center">
+                <h3 id="modalTitle" class="text-2xl font-bold uppercase text-trade-blue mb-2">Mở Tài Khoản Binance</h3>
+                <p class="text-xs text-gray-500 mb-6 font-bold uppercase tracking-widest">Partner Info</p>
+                
+                <!-- QR Code Area -->
+                <div class="bg-gray-100 p-4 inline-block border border-gray-200 mb-6">
+                    <img id="modalQR" src="" alt="QR Code" class="w-40 h-40 object-contain">
+                </div>
+                
+                <!-- Info Grid -->
+                <div class="space-y-4 text-left">
+                    <div>
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-1">Mã Đối Tác (Partner Code)</p>
+                        <div class="flex">
+                            <input type="text" id="modalCode" class="w-full bg-gray-50 border border-gray-300 p-2 text-trade-blue font-bold font-mono text-sm focus:outline-none" readonly>
+                            <button onclick="copyCode()" class="bg-trade-blue text-white px-4 hover:bg-trade-yellow hover:text-trade-blue transition-colors font-bold text-xs uppercase whitespace-nowrap flex items-center">
+                                <i class="fa-regular fa-copy mr-2"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a id="modalLink" href="#" target="_blank" class="block w-full py-4 bg-trade-yellow text-trade-blue font-bold uppercase text-sm hover:bg-trade-blue hover:text-white transition-colors text-center shadow-brutal-blue hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                        Truy cập liên kết đăng ký <i class="fa-solid fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script>
@@ -486,6 +556,78 @@
                 window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
             }
         }
+
+        // --- MODAL LOGIC (Copied from Homepage for consistency) ---
+        const modal = document.getElementById('brokerModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalQR = document.getElementById('modalQR');
+        const modalCode = document.getElementById('modalCode');
+        const modalLink = document.getElementById('modalLink');
+
+        // Static data for Binance (since this page specifically triggers Binance)
+        const binanceData = {
+            name: 'Binance',
+            code: 'NHATRADEHOC',
+            link: 'https://accounts.binance.com/register?ref=NHATRADEHOC'
+        };
+
+        function openModal() {
+            const data = binanceData;
+
+            modalTitle.innerText = `Mở Tài Khoản ${data.name}`;
+            modalCode.value = data.code;
+            modalLink.href = data.link;
+
+            if (data.link !== '#') {
+                modalQR.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.link)}`;
+                modalLink.classList.remove('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Truy cập liên kết đăng ký';
+            } else {
+                modalQR.src = 'https://placehold.co/200x200?text=Updating...'; 
+                modalLink.classList.add('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Đang cập nhật link';
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); 
+        }
+
+        function copyCode() {
+            const copyText = document.getElementById("modalCode");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy"); 
+            
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Copied';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        }
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
