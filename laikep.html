@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lãi kép & Tư duy dài hạn: Tại sao "Làm giàu chậm" lại là con đường nhanh nhất để về đích?</title>
+    <meta name="description" content="Khám phá sức mạnh của Lãi kép (Compound Interest) trong Crypto. Vạch trần ảo tưởng 'lãi 1% mỗi ngày'. Chiến lược xây dựng gia sản bền vững theo chu kỳ 4 năm thay vì đánh bạc theo giờ.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trade-blue': '#00167c',
+                        'trade-light-blue': '#1e40af', 
+                        'trade-dark': '#020617', 
+                        'trade-yellow': '#ffdf2b',
+                        'trade-white': '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px rgba(255, 255, 255, 0.2)',
+                        'brutal-dark': '4px 4px 0px 0px rgba(0, 22, 124, 0.1)',
+                        'brutal-yellow': '4px 4px 0px 0px #ffdf2b',
+                        'brutal-blue': '4px 4px 0px 0px #00167c',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Style cho ảnh trong bài viết */
+        .prose img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 4px;
+        }
+        .prose img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* Custom Table Styles */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+        .custom-table th {
+            background-color: #00167c;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Manrope', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        .custom-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .custom-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .custom-table tr:hover {
+            background-color: #f0f9ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-trade-yellow selection:text-trade-blue">
+
+    <nav class="fixed w-full z-50 bg-trade-blue/90 backdrop-blur-md border-b border-white/10 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center group">
+                    <i class="fa-solid fa-arrow-left text-trade-yellow mr-3 group-hover:-translate-x-1 transition-transform"></i>
+                    <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#hoan-phi" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Hoàn Phí</a>
+                    <a href="index.html#dich-vu" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Dịch Vụ</a>
+                    <a href="kien-thuc.html" class="text-sm uppercase tracking-widest text-white hover:text-trade-yellow transition-colors">Kiến Thức</a>
+                    <a href="https://t.me/nhatradehocspace" target="_blank" class="px-6 py-2 border border-trade-yellow text-trade-yellow hover:bg-trade-yellow hover:text-trade-blue transition-all font-bold text-sm uppercase">Cộng Đồng</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center text-xs uppercase tracking-widest text-gray-400 mb-6 font-bold">
+                <a href="index.html" class="hover:text-trade-blue transition-colors">Home</a>
+                <span class="mx-2">/</span>
+                <a href="kien-thuc.html" class="hover:text-trade-blue transition-colors">Kiến Thức</a>
+                <span class="mx-2">/</span>
+                <span class="text-trade-blue">Tư duy</span>
+            </div>
+
+            <h1 class="text-2xl md:text-4xl font-black text-trade-blue mb-8 leading-snug md:leading-tight">
+                LÃI KÉP & TƯ DUY DÀI HẠN: <br>
+                TẠI SAO "LÀM GIÀU CHẬM" LẠI LÀ <br>
+                <span class="bg-trade-yellow px-2 inline-block mt-2 text-trade-blue">CON ĐƯỜNG NHANH NHẤT ĐỂ VỀ ĐÍCH?</span>
+            </h1>
+
+            <div class="flex items-center justify-between border-y border-gray-100 py-4 mb-8 text-sm text-gray-500">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-trade-blue text-white flex items-center justify-center font-bold rounded-full">N</div>
+                    <span class="font-bold text-trade-blue">Nhà Trade Học</span>
+                </div>
+                <div>10 Jan 2026 &bull; 8 phút đọc</div>
+            </div>
+            
+            <div class="mb-8">
+                <!-- Hero Image -->
+                <img src="lk0.jpg" alt="Compound Interest Banner" class="w-full h-auto border-2 border-trade-blue shadow-lg rounded-lg" onerror="this.src='https://placehold.co/1200x600?text=Lai+Kep+Banner'">
+            </div>
+        </div>
+    </header>
+
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="prose prose-lg prose-blue mx-auto font-serif text-gray-700 leading-loose">
+            
+            <!-- Intro Block -->
+            <div class="font-sans text-xl font-medium text-gray-900 mb-8 border-l-4 border-trade-yellow pl-6 italic py-2 bg-yellow-50/50">
+                <p class="mb-2">Trong thị trường này, ai cũng muốn làm giàu nhanh. Nhưng nghịch lý thay: Muốn nhanh thì phải từ từ.</p>
+                <p>Những người cố gắng đi tắt đón đầu thường ngã xuống vực, còn những người đi chậm rãi, chắc chắn lại là những người về đích với túi tiền đầy ắp.</p>
+            </div>
+
+            <p>
+                Chào mừng bạn đến với kỳ quan thứ 8 của thế giới: <strong>Lãi kép (Compound Interest)</strong>.
+            </p>
+
+            <blockquote class="text-xl font-bold text-trade-blue border-l-4 border-blue-500 pl-4 my-6 not-italic">
+                "Lãi suất kép là kỳ quan thứ 8 của thế giới. Những ai hiểu nó sẽ kiếm được tiền, những ai không hiểu sẽ phải trả tiền cho nó." <br>
+                <span class="text-sm font-normal text-gray-500 mt-2 block">- Albert Einstein</span>
+            </blockquote>
+
+            <!-- SECTION 1 -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">1. Lãi kép là gì? (Hòn tuyết lăn)</h2>
+            <p>Hiểu đơn giản: Lãi kép là <strong>Lãi mẹ đẻ lãi con</strong>. Bạn có vốn gốc -> Sinh ra Lãi -> Bạn gộp Lãi vào Vốn gốc để đầu tư tiếp -> Sinh ra Lãi lớn hơn.</p>
+
+            <div class="bg-gray-100 p-6 rounded-lg border border-gray-200 my-6">
+                <h4 class="font-bold text-trade-blue mb-4 uppercase text-sm"><i class="fa-solid fa-scale-balanced mr-2"></i> Ví dụ so sánh: Bạn có 10.000 USD</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 border border-red-200 rounded shadow-sm">
+                        <strong class="text-red-600 block mb-2">Người A (Tư duy ngắn hạn)</strong>
+                        <p class="text-sm text-gray-600 mb-2">Muốn X2 ngay lập tức. All-in vào kèo rủi ro.</p>
+                        <p class="text-sm font-bold">Kết quả sau 1 năm:</p>
+                        <p class="text-sm text-gray-500">Thường là mất sạch hoặc hòa vốn vì "được thì ăn, thua thì trả lại".</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 border border-green-200 rounded shadow-sm">
+                        <strong class="text-green-600 block mb-2">Người B (Tư duy lãi kép)</strong>
+                        <p class="text-sm text-gray-600 mb-2">Mục tiêu khiêm tốn: Lãi 20%/năm.</p>
+                        <ul class="text-sm list-none space-y-1 font-mono text-trade-blue">
+                            <li>Năm 1: 12.000$</li>
+                            <li>Năm 5: 24.800$ (Gấp 2.5 lần)</li>
+                            <li>Năm 10: 61.900$ (Gấp 6 lần)</li>
+                            <li><strong>Năm 20: 383.000$ (Gấp 38 lần)</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p>Bạn thấy đấy, ở những năm đầu, con số tăng rất chậm. Nhưng càng về sau, tài sản tăng theo cấp số nhân. Đó là hiệu ứng <strong>Hòn tuyết lăn (Snowball)</strong>.</p>
+
+            <!-- Image 1 -->
+            <figure class="my-8">
+                <img src="lk1.jpg" alt="Biểu đồ lãi kép Hòn tuyết lăn" onerror="this.src='https://placehold.co/800x400?text=Snowball+Effect'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Sự tăng trưởng theo cấp số nhân của Lãi kép theo thời gian</figcaption>
+            </figure>
+
+            <!-- SECTION 2 -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">2. Ảo tưởng "Lãi 1% mỗi ngày" (Cạm bẫy Ponzi)</h2>
+            <p>Rất nhiều nhóm lừa đảo dụ dỗ người mới bằng cam kết: "Lợi nhuận 1%/ngày, đều như vắt chanh". Hãy dùng toán học để vạch trần điều này:</p>
+
+            <div class="bg-red-50 p-6 border-l-4 border-red-500 my-6">
+                <p class="font-bold text-red-800 mb-2">Nếu bạn có 1.000$ và lãi 1%/ngày:</p>
+                <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                    <li>Sau 1 năm: Bạn sẽ có <strong>37.700 USD</strong> (Gấp 37 lần).</li>
+                    <li>Sau 2 năm: Bạn sẽ có <strong>1.4 triệu USD</strong>.</li>
+                    <li>Sau 3 năm: Bạn sẽ giàu hơn cả Elon Musk.</li>
+                </ul>
+                <p class="mt-4 font-bold text-red-600 uppercase text-sm">-> Điều này là BẤT KHẢ THI.</p>
+            </div>
+
+            <p>Không một thị trường nào có thể trả lãi đều đặn 1%/ngày mãi mãi. Nếu ai đó cam kết điều này, 100% đó là mô hình <strong>Ponzi</strong> (lấy tiền người sau trả cho người trước). Hãy chạy ngay lập tức.</p>
+
+            <!-- SECTION 3 -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">3. Tư duy dài hạn: Nhìn theo Chu kỳ (4 năm)</h2>
+            <p>Thị trường Crypto không tăng trưởng theo đường thẳng, mà theo hình xoắn ốc đi lên qua các chu kỳ 4 năm (Halving).</p>
+
+            <div class="space-y-4 my-6">
+                <div class="flex items-center bg-green-50 p-3 rounded border border-green-100">
+                    <span class="w-24 font-bold text-green-700">Năm 1</span>
+                    <span class="flex-1">Uptrend: Tài sản tăng mạnh (X5, X10).</span>
+                </div>
+                <div class="flex items-center bg-red-50 p-3 rounded border border-red-100">
+                    <span class="w-24 font-bold text-red-700">Năm 2</span>
+                    <span class="flex-1">Downtrend: Tài sản giảm sâu (Chia 3, Chia 5).</span>
+                </div>
+                <div class="flex items-center bg-yellow-50 p-3 rounded border border-yellow-100">
+                    <span class="w-24 font-bold text-yellow-700">Năm 3</span>
+                    <span class="flex-1">Sideway: Đi ngang tích lũy.</span>
+                </div>
+                <div class="flex items-center bg-blue-50 p-3 rounded border border-blue-100">
+                    <span class="w-24 font-bold text-blue-700">Năm 4</span>
+                    <span class="flex-1">Recovery: Hồi phục và vượt đỉnh cũ.</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-4 border border-gray-200 shadow-sm rounded">
+                    <h4 class="font-bold text-trade-blue mb-2">Người tư duy dài hạn</h4>
+                    <p class="text-sm text-gray-600">Sẽ không hoảng sợ khi tài sản giảm ở Năm 2, vì họ biết Năm 4 sẽ lại vượt đỉnh. Họ kiên trì mua tích sản (DCA).</p>
+                </div>
+                <div class="bg-white p-4 border border-gray-200 shadow-sm rounded">
+                    <h4 class="font-bold text-gray-500 mb-2">Người tư duy ngắn hạn</h4>
+                    <p class="text-sm text-gray-600">Sẽ cắt lỗ ở Năm 2 và chửi bới thị trường, bỏ lỡ hoàn toàn cơ hội ở Năm 4.</p>
+                </div>
+            </div>
+
+            <p class="mt-4 font-bold text-trade-blue italic text-center">Lời khuyên: Đừng nhìn bảng điện theo Phút. Hãy nhìn tài sản của bạn theo Năm.</p>
+
+            <!-- Image 2 -->
+            <figure class="my-8">
+                <img src="lk2.png" alt="Chu kỳ thị trường 4 năm" onerror="this.src='https://placehold.co/800x400?text=4+Year+Cycle'">
+                <figcaption class="text-center text-sm text-gray-500 italic mt-3">Kiên nhẫn qua mùa đông để hái quả ngọt vào mùa hè</figcaption>
+            </figure>
+
+            <!-- SECTION 4 -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">4. Tái đầu tư và Sức mạnh của sự "Tiết kiệm"</h2>
+            <p>Để lãi kép hoạt động hiệu quả nhất, bạn cần tối ưu hóa dòng tiền đầu vào. Mỗi đồng bạn tiết kiệm được từ Phí giao dịch, bạn tái đầu tư nó vào vốn gốc, nó sẽ sinh ra lãi kép trong tương lai.</p>
+            
+            <div class="bg-yellow-50 p-4 border border-yellow-200 rounded my-4">
+                <p class="text-sm font-bold text-trade-blue"><i class="fa-solid fa-coins mr-2 text-yellow-600"></i> Bài toán nhỏ:</p>
+                <p class="text-sm mt-1">Bạn tiết kiệm được 100$ phí giao dịch hôm nay. Với lãi suất đầu tư 20%/năm, sau 10 năm, 100$ đó biến thành <strong>619$</strong>.</p>
+            </div>
+            
+            <p class="mb-4">Đừng coi thường tiền lẻ. Hãy bịt mọi lỗ rò rỉ trong con tàu tài chính của bạn ngay từ bây giờ.</p>
+
+            <!-- BINANCE PROMO BOX -->
+            <div class="mt-6 p-6 bg-gradient-to-br from-yellow-50 to-white border-2 border-trade-yellow rounded-lg shadow-sm text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-trade-yellow"></div>
+                <p class="font-black text-trade-blue text-2xl mb-2 uppercase">Khởi Động Hành Trình Lãi Kép</p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                    <div class="bg-white px-4 py-2 border border-gray-300 rounded shadow-inner">
+                        <span class="text-xs text-gray-400 block text-left">Mã giới thiệu độc quyền:</span>
+                        <span class="text-xl font-mono font-black text-trade-blue tracking-wider">NHATRADEHOC</span>
+                    </div>
+                    <button onclick="copyCode()" class="bg-trade-blue text-white px-4 py-2 rounded font-bold text-sm hover:bg-trade-yellow hover:text-trade-blue transition-colors">
+                        <i class="fa-regular fa-copy mr-1"></i> Copy
+                    </button>
+                </div>
+
+                <p class="text-sm text-gray-600 mb-4"><strong>Ý nghĩa:</strong> Giảm 40% phí giao dịch trọn đời. Đây là khoản "Lãi suất đảm bảo" đầu tiên mà bạn nhận được ngay khi chưa cần thị trường tăng giá. Hãy dùng số tiền tiết kiệm này để mua thêm Bitcoin tích trữ.</p>
+                
+                <button onclick="openModal()" class="px-8 py-3 bg-trade-blue text-white font-bold text-sm uppercase rounded shadow-brutal-blue hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                    Đăng ký ngay
+                </button>
+            </div>
+
+            <!-- CONCLUSION -->
+            <h2 class="font-sans text-2xl font-bold text-trade-blue mt-12 mb-6 uppercase border-b-2 border-gray-100 pb-2">Tổng kết</h2>
+            <div class="p-8 bg-trade-dark text-white font-sans text-center border-t-4 border-trade-yellow shadow-xl">
+                <p class="text-lg leading-relaxed mb-6 italic">
+                    "Con đường của những nhà đầu tư huyền thoại không phải là x100 trong 1 đêm, mà là lãi đều đặn và tái đầu tư trong nhiều năm."
+                </p>
+                
+                <p class="text-sm font-light mb-6">
+                    Hãy bắt đầu gieo hạt ngay hôm nay, kiên nhẫn chăm sóc và để thời gian làm công việc kỳ diệu của nó.
+                </p>
+
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <a href="kien-thuc.html" class="inline-block px-6 py-3 bg-trade-yellow text-trade-blue font-bold uppercase text-sm hover:bg-white hover:text-trade-blue transition-all shadow-lg hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                        <i class="fa-solid fa-list mr-2"></i> Quay lại Thư viện Kiến thức
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- Social Share Section -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div class="border-t-2 border-gray-100 pt-8">
+            <h3 class="text-sm font-bold text-trade-blue uppercase tracking-widest mb-6">Chia sẻ bài viết</h3>
+            <div class="flex gap-4 flex-wrap">
+                <button onclick="shareFacebook()" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Facebook">
+                    <i class="fa-brands fa-facebook-f text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on X">
+                    <i class="fa-brands fa-x-twitter text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://www.threads.net/intent/post?text='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Threads">
+                    <i class="fa-brands fa-threads text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="window.open('https://t.me/share/url?url='+encodeURIComponent(window.location.href), '_blank')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Share on Telegram">
+                    <i class="fa-brands fa-telegram text-xl text-trade-blue"></i>
+                </button>
+                <button onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép link!')" class="group w-12 h-12 flex items-center justify-center border-2 border-trade-blue shadow-[4px_4px_0px_0px_#00167c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-white cursor-pointer active:bg-gray-50" title="Copy Link">
+                    <i class="fa-solid fa-link text-xl text-trade-blue"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Posts -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
+        <h3 class="text-2xl font-black text-trade-blue uppercase mb-8 flex items-center">
+            <span class="bg-trade-yellow w-2 h-8 mr-3 block"></span> Bài Viết Liên Quan
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="dca.html" class="group block border-2 border-transparent border-l-4 border-l-trade-blue bg-gray-50 p-6 hover:bg-white hover:border-gray-100 hover:shadow-lg transition-all">
+                <h4 class="font-black text-lg text-trade-blue uppercase group-hover:text-trade-light-blue leading-tight tracking-tight">
+                    Quản Lý Vốn & Chiến Lược DCA
+                </h4>
+                <div class="mt-3 text-xs font-bold text-gray-400 group-hover:text-trade-yellow transition-colors uppercase tracking-widest flex items-center">
+                    Xem ngay <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+             <a href="chuky4nam.html" class="group block border-2 border-transparent border-l-4 border-l-trade-blue bg-gray-50 p-6 hover:bg-white hover:border-gray-100 hover:shadow-lg transition-all">
+                <h4 class="font-black text-lg text-trade-blue uppercase group-hover:text-trade-light-blue leading-tight tracking-tight">
+                    Chu Kỳ Thị Trường & Bitcoin Halving
+                </h4>
+                <div class="mt-3 text-xs font-bold text-gray-400 group-hover:text-trade-yellow transition-colors uppercase tracking-widest flex items-center">
+                    Xem ngay <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000d4a] border-t border-white/10 pt-24 pb-12 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- About -->
+                <div class="lg:col-span-2 pr-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="font-extrabold text-2xl tracking-wider uppercase text-white">Nhà Trade Học</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed max-w-md text-sm border-l border-white/20 pl-4">
+                        Chúng tôi không hứa hẹn làm giàu nhanh chóng. Chúng tôi cung cấp kiến thức chuẩn, công cụ đúng và tư duy kỷ luật.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/cosmic.prophet259/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nha_trade_hoc_academy" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-tiktok text-lg"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@NhaTradeHoc" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:border-trade-yellow hover:text-trade-blue hover:bg-trade-yellow transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên kết</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="index.html#hoan-phi" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cơ chế hoàn phí</a></li>
+                        <li><a href="index.html#dich-vu" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Khóa học thực chiến</a></li>
+                        <li><a href="index.html#cong-dong" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Cộng đồng Telegram</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-trade-yellow transition-colors text-sm font-medium hover:pl-2 transition-all">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-black uppercase tracking-widest mb-8 text-lg">Liên hệ</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-envelope mt-1 mr-3 text-trade-yellow"></i>
+                            contact.nhatradehoc@gmail.com
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-trade-yellow"></i>
+                            Hà Nội, Việt Nam
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center opacity-50 hover:opacity-100 transition-opacity">
+                <p class="text-gray-500 text-xs mb-4 md:mb-0 uppercase tracking-widest">
+                    © 2026 Nhà Trade Học. All rights reserved.
+                </p>
+                <p class="text-gray-600 text-xs italic">
+                    Giao dịch tài chính tiềm ẩn rủi ro.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BROKER INFO MODAL (Standardized) -->
+    <div id="brokerModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-md mx-4 relative shadow-2xl transform scale-95 transition-transform duration-300 border-2 border-trade-yellow" id="modalContent">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute -top-4 -right-4 w-10 h-10 bg-trade-yellow text-trade-blue flex items-center justify-center font-bold shadow-lg hover:bg-white transition-colors">
+                <i class="fa-solid fa-times text-xl"></i>
+            </button>
+            
+            <div class="p-8 text-center">
+                <h3 id="modalTitle" class="text-2xl font-bold uppercase text-trade-blue mb-2">Mở Tài Khoản Binance</h3>
+                <p class="text-xs text-gray-500 mb-6 font-bold uppercase tracking-widest">Partner Info</p>
+                
+                <div class="bg-gray-100 p-4 inline-block border border-gray-200 mb-6">
+                    <img id="modalQR" src="" alt="QR Code" class="w-40 h-40 object-contain">
+                </div>
+                
+                <div class="space-y-4 text-left">
+                    <div>
+                        <p class="text-xs text-gray-400 font-bold uppercase mb-1">Mã Đối Tác (Partner Code)</p>
+                        <div class="flex">
+                            <input type="text" id="modalCode" class="w-full bg-gray-50 border border-gray-300 p-2 text-trade-blue font-bold font-mono text-sm focus:outline-none" readonly>
+                            <button onclick="copyCode()" class="bg-trade-blue text-white px-4 hover:bg-trade-yellow hover:text-trade-blue transition-colors font-bold text-xs uppercase whitespace-nowrap flex items-center">
+                                <i class="fa-regular fa-copy mr-2"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a id="modalLink" href="#" target="_blank" class="block w-full py-4 bg-trade-yellow text-trade-blue font-bold uppercase text-sm hover:bg-trade-blue hover:text-white transition-colors text-center shadow-brutal-blue hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                        Truy cập liên kết đăng ký <i class="fa-solid fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Share Logic Script
+        function shareFacebook() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+            }
+        }
+
+        // Lightbox Logic for real images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.prose img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // --- MODAL LOGIC (Standardized) ---
+        const modal = document.getElementById('brokerModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalQR = document.getElementById('modalQR');
+        const modalCode = document.getElementById('modalCode');
+        const modalLink = document.getElementById('modalLink');
+
+        // Static data for Binance 
+        const binanceData = {
+            name: 'Binance',
+            code: 'NHATRADEHOC',
+            link: 'https://accounts.binance.com/register?ref=NHATRADEHOC'
+        };
+
+        function openModal() {
+            const data = binanceData;
+
+            modalTitle.innerText = `Mở Tài Khoản ${data.name}`;
+            modalCode.value = data.code;
+            modalLink.href = data.link;
+
+            if (data.link !== '#') {
+                modalQR.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.link)}`;
+                modalLink.classList.remove('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Truy cập liên kết đăng ký';
+            } else {
+                modalQR.src = 'https://placehold.co/200x200?text=Updating...'; 
+                modalLink.classList.add('pointer-events-none', 'opacity-50');
+                modalLink.innerText = 'Đang cập nhật link';
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); 
+        }
+
+        function copyCode() {
+            const copyText = document.getElementById("modalCode");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy"); 
+            
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Copied';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        }
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
